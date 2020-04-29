@@ -33,7 +33,7 @@ pl1 <- ggplot(df) +
   geom_sf(fill = "transparent", color = "black", size = 0.5, 
           data = ro %>% group_by(GID_0) %>% summarise(), mapping = aes(geometry = geometry))+
   theme_classic()+
-  scale_fill_viridis(option = "magma", direction = -1,name = "Exposure to PM2.5\nmicrograms", 
+  scale_fill_viridis(option = "magma", direction = -1,name = "Exposure to PM2.5,\nmicrograms", 
                      guide = guide_colorbar(direction = "vertical",
                        barheight = unit(70, units = "mm"),
                        barwidth = unit(10, units = "mm"),
@@ -54,7 +54,8 @@ pl1 <- ggplot(df) +
     legend.title.align=0.5)
 
 require(cowplot)
-pl2 <- ggdraw(align_legend(pl1))
 source('align_title.R')
+
+pl2 <- ggdraw(align_legend(pl1))
 #plot(pl1)
 ggsave('map1.png', plot = pl2, width = 11, height = 9)
